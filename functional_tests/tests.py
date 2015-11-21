@@ -32,7 +32,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys('Buy peacock feathers')
         
 
-# When she hits enter, the page updates, and now the page lists
+# When she hits enter, she is taken to a new URL, and now the page lists
 # "1: Buy peacock feathers" as a to-do item in a to-do list
         inputbox.send_keys(Keys.ENTER)
         edith_list_url = self.browser.current_url
@@ -50,8 +50,8 @@ class NewVisitorTest(LiveServerTestCase):
         
 
 # The page updates again, and now both items are on her list
-        self.check_for_row_in_list_table('1: Buy peacock feathers')
         self.check_for_row_in_list_table('2: Use peacock feathers to make a fly')
+        self.check_for_row_in_list_table('1: Buy peacock feathers')
         
 # Now a new user, Francis, comes along to the site.
 ## We use a new browser session to make sure that no information 
