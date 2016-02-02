@@ -1,0 +1,17 @@
+# Gunicorn Site systemd service file
+
+[Unit]
+Description=Gunicorn server for SITENAME
+#After=network.target
+#After=syslog.target
+[Service]
+#Environment=/home/carl/sites/SITEMAME
+
+ExecStart=/home/carl/sites/SITENAME/virtualenv/bin/gunicorn --chdir /home/carl/sites/SITENAME/source --bind unix:/tmp/SITENAME.socket superlists.wsgi:application
+Restart=on-failure
+#RuntimeDirectory=gunicorn-stagingd
+#RuntimeDirectoryMode=755
+
+
+#sudo systemctl start gunicorn-SITENAME-staging.example.com.service 
+
