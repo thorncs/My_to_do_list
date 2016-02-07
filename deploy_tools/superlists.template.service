@@ -5,7 +5,7 @@ Description=Gunicorn server for SITENAME
 #After=network.target
 #After=syslog.target
 [Service]
-#Environment=/home/carl/sites/SITEMAME
+#Environment=/home/carl/sites/SITENAME
 
 ExecStart=/home/carl/sites/SITENAME/virtualenv/bin/gunicorn --chdir /home/carl/sites/SITENAME/source --bind unix:/tmp/SITENAME.socket superlists.wsgi:application
 Restart=on-failure
