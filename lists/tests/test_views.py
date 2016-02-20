@@ -44,7 +44,9 @@ class NewListTest(TestCase):
         response = self.client.post('/lists/new', data={'text': ''})
         self.assertContains(response, escape(EMPTY_ITEM_ERROR))
         
-   
+    def test_for_invalid_input_passes_form_to_template(self):
+        response = self.client.post('/lists/new', data={'text': ''})
+        self.assertIsInstance(response.context['form'], ItemForm)
         
     
 
@@ -119,7 +121,7 @@ class ListViewTest(TestCase):
         self.assertContains(response, 'name="text"')
 
     def test_for_invalid_input_passes_form_to_template(self):
-        response = self.client.post('/lists/new', data={'text': ''})
+        response = self.post_invalid_input()
         self.assertIsInstance(response.context['form'], ItemForm)  
     def test_for_invalid_input_shows_error_on_page(self):
         response = self.post_invalid_input()
